@@ -1,11 +1,12 @@
-document.body.onmousemove = (e) => {
-  for (const date of document.querySelectorAll(".container div")) {
-    const rect = date.getBoundingClientRect(),
-      x = e.clientX - rect.left,
-      y = e.clientY - rect.top;
+document.body.onmousemove = ({ clientX, clientY }) => {
+  const elements = document.querySelectorAll(".container div");
+  elements.forEach((e) => {
+    const { left, top } = e.getBoundingClientRect();
+    const mouseX = clientX - left;
+    const mouseY = clientY - top;
 
-    date.style.setProperty("--mouse-x", `${x}px`);
-    date.style.setProperty("--mouse-y", `${y}px`);
-  }
+    e.style.setProperty("--mouse-x", `${mouseX}px`);
+    e.style.setProperty("--mouse-y", `${mouseY}px`);
+  });
 };
 
