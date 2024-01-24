@@ -1,0 +1,70 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #141414;
+}
+.container {
+  max-width: 1200px;
+  width: fit-content;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.container div {
+  position: relative;
+  padding: 30px 20px;
+  background-color: #141414;
+}
+
+.container div h3 {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+}
+.container div p {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1rem;
+}
+.container div h3,
+.container div p {
+  position: relative;
+}
+.container div::after {
+  content: "";
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  padding: 2px;
+  top: -2px;
+  right: -2px;
+  position: absolute;
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.6),
+    transparent 20%
+  );
+}
+.container div:hover::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  right: 0px;
+  background: radial-gradient(
+    500px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.08),
+    transparent 30%
+  );
+  z-index: 3;
+}
+.container div:hover::after {
+  background: rgba(255, 255, 255, 0.3);
+}
+
